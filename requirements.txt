@@ -1,0 +1,46 @@
+# 全球军事动态分析研判系统 - Python 依赖
+
+# Web Framework
+Flask>=3.0.0
+Flask-CORS>=4.0.0
+flask-restx>=1.3.0
+
+# Database
+psycopg2-binary>=2.9.9
+SQLAlchemy>=2.0.0
+alembic>=1.13.0
+
+# API Client
+requests>=2.31.0
+httpx>=0.26.0
+
+# Data Processing
+pandas>=2.1.0
+numpy>=1.26.0
+
+# Mapping/GIS
+folium>=0.15.0
+geopandas>=0.14.0
+shapely>=2.0.0
+
+# Visualization
+plotly>=5.18.0
+echarts-python>=0.4.0
+
+# Authentication
+PyJWT>=2.8.0
+cryptography>=41.0.0
+
+# Utils
+python-dotenv>=1.0.0
+pyyaml>=6.0.1
+pytz>=2024.1
+
+# Development
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.12.0
+flake8>=7.0.0
+
+# Deployment
+gunicorn>=21.2.0
