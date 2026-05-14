@@ -1,0 +1,24 @@
+[project]
+name = "global-military-monitor"
+version = "1.0.0"
+description = "全球军事动态分析研判系统"
+requires-python = ">=3.10"
+dependencies = [
+    "PyQt5>=5.15.0",
+    "psycopg2-binary>=2.9.0",
+    "SQLAlchemy>=2.0.0",
+    "alembic>=1.13.0",
+    "Flask>=3.0.0",
+    "flask-cors>=4.0.0",
+    "requests>=2.31.0",
+    "pandas>=2.0.0",
+    "numpy>=1.26.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.0",
+    "pytz>=2024.0",
+    "APScheduler>=3.10.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
