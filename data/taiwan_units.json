@@ -1,0 +1,208 @@
+{
+  "description": "台湾地区军事编制示例数据 - 按项目规范书3.3.3节要求录入",
+  "country": {
+    "code": "TWN",
+    "name_zh": "台湾地区",
+    "name_en": "Taiwan Region",
+    "region": "East Asia"
+  },
+  "branches": [
+    {
+      "code": "TW_ARMY",
+      "name_zh": "陆军",
+      "name_en": "Army",
+      "branch_type": "army"
+    },
+    {
+      "code": "TW_NAVY",
+      "name_zh": "海军",
+      "name_en": "Navy",
+      "branch_type": "navy"
+    },
+    {
+      "code": "TW_AIR",
+      "name_zh": "空军",
+      "name_en": "Air Force",
+      "branch_type": "air_force"
+    }
+  ],
+  "units": [
+    {
+      "unit_code": "TWN-ARMY-HQ",
+      "unit_name": "陆军司令部",
+      "unit_level": "总部",
+      "unit_type": "headquarters",
+      "parent_unit_code": null,
+      "commander": null,
+      "strength": null,
+      "location": {
+        "name": "台北市",
+        "latitude": "25.0330",
+        "longitude": "121.5654"
+      },
+      "equipment": []
+    },
+    {
+      "unit_code": "TWN-ARMY-6COR",
+      "unit_name": "第六军团",
+      "unit_level": "军团",
+      "unit_type": "corps",
+      "parent_unit_code": "TWN-ARMY-HQ",
+      "commander": null,
+      "strength": 30000,
+      "location": {
+        "name": "桃园市",
+        "latitude": "24.9936",
+        "longitude": "121.3010"
+      },
+      "equipment": []
+    },
+    {
+      "unit_code": "TWN-ARMY-8COR",
+      "unit_name": "第八军团",
+      "unit_level": "军团",
+      "unit_type": "corps",
+      "parent_unit_code": "TWN-ARMY-HQ",
+      "commander": null,
+      "strength": 35000,
+      "location": {
+        "name": "高雄市",
+        "latitude": "22.6273",
+        "longitude": "120.3014"
+      },
+      "equipment": []
+    },
+    {
+      "unit_code": "TWN-ARMY-9COR",
+      "unit_name": "第九军团",
+      "unit_level": "军团",
+      "unit_type": "corps",
+      "parent_unit_code": "TWN-ARMY-HQ",
+      "commander": null,
+      "strength": 25000,
+      "location": {
+        "name": "花莲县",
+        "latitude": "23.9875",
+        "longitude": "121.6011"
+      },
+      "equipment": []
+    },
+    {
+      "unit_code": "TWN-ARMY-10COR",
+      "unit_name": "第十军团",
+      "unit_level": "军团",
+      "unit_type": "corps",
+      "parent_unit_code": "TWN-ARMY-HQ",
+      "commander": null,
+      "strength": 30000,
+      "location": {
+        "name": "台中市",
+        "latitude": "24.1477",
+        "longitude": "120.6736"
+      },
+      "equipment": []
+    },
+    {
+      "unit_code": "TWN-CMD-TH",
+      "unit_name": "台北防卫指挥部",
+      "unit_level": "指挥部",
+      "unit_type": "defense_command",
+      "parent_unit_code": "TWN-ARMY-HQ",
+      "commander": null,
+      "strength": 20000,
+      "location": {
+        "name": "台北市",
+        "latitude": "25.0330",
+        "longitude": "121.5654"
+      },
+      "equipment": []
+    },
+    {
+      "unit_code": "TWN-CMD-TCC",
+      "unit_name": "台中防卫指挥部",
+      "unit_level": "指挥部",
+      "unit_type": "defense_command",
+      "parent_unit_code": "TWN-ARMY-HQ",
+      "commander": null,
+      "strength": 25000,
+      "location": {
+        "name": "台中市",
+        "latitude": "24.1477",
+        "longitude": "120.6736"
+      },
+      "equipment": []
+    },
+    {
+      "unit_code": "TWN-CMD-TN",
+      "unit_name": "台南防卫指挥部",
+      "unit_level": "指挥部",
+      "unit_type": "defense_command",
+      "parent_unit_code": "TWN-ARMY-HQ",
+      "commander": null,
+      "strength": 18000,
+      "location": {
+        "name": "台南市",
+        "latitude": "22.9998",
+        "longitude": "120.2269"
+      },
+      "equipment": []
+    },
+    {
+      "unit_code": "TWN-ARTY-58",
+      "unit_name": "第五十八炮兵指挥部",
+      "unit_level": "指挥部",
+      "unit_type": "artillery",
+      "parent_unit_code": "TWN-ARMY-HQ",
+      "commander": null,
+      "strength": 5000,
+      "location": {
+        "name": "屏东县",
+        "latitude": "22.5519",
+        "longitude": "120.5487"
+      },
+      "equipment": []
+    },
+    {
+      "unit_code": "TWN-CBRN-36",
+      "unit_name": "第三十六化学兵旅",
+      "unit_level": "旅",
+      "unit_type": "cbrn",
+      "parent_unit_code": "TWN-ARMY-HQ",
+      "commander": null,
+      "strength": 3000,
+      "location": {
+        "name": "桃园市",
+        "latitude": "24.9936",
+        "longitude": "121.3010"
+      },
+      "equipment": []
+    },
+    {
+      "unit_code": "TWN-ENG-52",
+      "unit_name": "第五十二工兵群",
+      "unit_level": "群",
+      "unit_type": "engineer",
+      "parent_unit_code": "TWN-ARMY-HQ",
+      "commander": null,
+      "strength": 2500,
+      "location": {
+        "name": "台南市",
+        "latitude": "22.9998",
+        "longitude": "120.2269"
+      },
+      "equipment": []
+    }
+  ],
+  "command_relations": [
+    {"source": "TWN-ARMY-HQ", "target": "TWN-ARMY-6COR", "relation": "command"},
+    {"source": "TWN-ARMY-HQ", "target": "TWN-ARMY-8COR", "relation": "command"},
+    {"source": "TWN-ARMY-HQ", "target": "TWN-ARMY-9COR", "relation": "command"},
+    {"source": "TWN-ARMY-HQ", "target": "TWN-ARMY-10COR", "relation": "command"},
+    {"source": "TWN-ARMY-HQ", "target": "TWN-CMD-TH", "relation": "command"},
+    {"source": "TWN-ARMY-HQ", "target": "TWN-CMD-TCC", "relation": "command"},
+    {"source": "TWN-ARMY-HQ", "target": "TWN-CMD-TN", "relation": "command"},
+    {"source": "TWN-ARMY-HQ", "target": "TWN-ARTY-58", "relation": "command"},
+    {"source": "TWN-ARMY-HQ", "target": "TWN-CBRN-36", "relation": "command"},
+    {"source": "TWN-ARMY-HQ", "target": "TWN-ENG-52", "relation": "command"}
+  ]
+}
