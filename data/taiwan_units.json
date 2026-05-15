@@ -55,7 +55,34 @@
         "latitude": "24.9936",
         "longitude": "121.3010"
       },
-      "equipment": []
+      "equipment": [
+        {
+          "equipment_id": "EQ-6COR-001",
+          "name": "M60A3主战坦克",
+          "model_code": "M60A3 TTS",
+          "type": "main_battle_tank",
+          "inventory_count": 225,
+          "specifications": {
+            "weight_kg": 56500,
+            "max_speed_kmh": 48,
+            "gun_caliber_mm": 105,
+            "crew": 4
+          }
+        },
+        {
+          "equipment_id": "EQ-6COR-002",
+          "name": "CM32云豹装甲车",
+          "model_code": "CM-32",
+          "type": "infantry_fighting_vehicle",
+          "inventory_count": 150,
+          "specifications": {
+            "weight_kg": 22000,
+            "max_speed_kmh": 100,
+            "armament": "M241 7.62mm机枪",
+            "crew": 3
+          }
+        }
+      ]
     },
     {
       "unit_code": "TWN-ARMY-8COR",
@@ -70,7 +97,33 @@
         "latitude": "22.6273",
         "longitude": "120.3014"
       },
-      "equipment": []
+      "equipment": [
+        {
+          "equipment_id": "EQ-8COR-001",
+          "name": "M60A3主战坦克",
+          "model_code": "M60A3 TTS",
+          "type": "main_battle_tank",
+          "inventory_count": 200,
+          "specifications": {
+            "weight_kg": 56500,
+            "max_speed_kmh": 48,
+            "gun_caliber_mm": 105,
+            "crew": 4
+          }
+        },
+        {
+          "equipment_id": "EQ-8COR-002",
+          "name": "拖式反战车飞弹",
+          "model_code": "TOW-2A",
+          "type": "anti_tank_missile",
+          "inventory_count": 120,
+          "specifications": {
+            "range_m": 3750,
+            "penetration_mm": 900,
+            "guidance": "有线制导"
+          }
+        }
+      ]
     },
     {
       "unit_code": "TWN-ARMY-9COR",
@@ -85,7 +138,21 @@
         "latitude": "23.9875",
         "longitude": "121.6011"
       },
-      "equipment": []
+      "equipment": [
+        {
+          "equipment_id": "EQ-9COR-001",
+          "name": "M60A3主战坦克",
+          "model_code": "M60A3 TTS",
+          "type": "main_battle_tank",
+          "inventory_count": 150,
+          "specifications": {
+            "weight_kg": 56500,
+            "max_speed_kmh": 48,
+            "gun_caliber_mm": 105,
+            "crew": 4
+          }
+        }
+      ]
     },
     {
       "unit_code": "TWN-ARMY-10COR",
@@ -100,7 +167,34 @@
         "latitude": "24.1477",
         "longitude": "120.6736"
       },
-      "equipment": []
+      "equipment": [
+        {
+          "equipment_id": "EQ-10COR-001",
+          "name": "M60A3主战坦克",
+          "model_code": "M60A3 TTS",
+          "type": "main_battle_tank",
+          "inventory_count": 175,
+          "specifications": {
+            "weight_kg": 56500,
+            "max_speed_kmh": 48,
+            "gun_caliber_mm": 105,
+            "crew": 4
+          }
+        },
+        {
+          "equipment_id": "EQ-10COR-002",
+          "name": "CM32云豹装甲车",
+          "model_code": "CM-32",
+          "type": "infantry_fighting_vehicle",
+          "inventory_count": 100,
+          "specifications": {
+            "weight_kg": 22000,
+            "max_speed_kmh": 100,
+            "armament": "M241 7.62mm机枪",
+            "crew": 3
+          }
+        }
+      ]
     },
     {
       "unit_code": "TWN-CMD-TH",
@@ -115,7 +209,21 @@
         "latitude": "25.0330",
         "longitude": "121.5654"
       },
-      "equipment": []
+      "equipment": [
+        {
+          "equipment_id": "EQ-TH-001",
+          "name": "复仇者防空飞弹系统",
+          "model_code": "FIM-92 Avenger",
+          "type": "surface_to_air_missile",
+          "inventory_count": 48,
+          "specifications": {
+            "range_m": 5000,
+            "max_altitude_m": 3800,
+            "speed_mach": 2,
+            "guidance": "红外线制导"
+          }
+        }
+      ]
     },
     {
       "unit_code": "TWN-CMD-TCC",
@@ -130,7 +238,21 @@
         "latitude": "24.1477",
         "longitude": "120.6736"
       },
-      "equipment": []
+      "equipment": [
+        {
+          "equipment_id": "EQ-TCC-001",
+          "name": "刺针防空飞弹",
+          "model_code": "FIM-92 Stinger",
+          "type": "surface_to_air_missile",
+          "inventory_count": 72,
+          "specifications": {
+            "range_m": 4800,
+            "max_altitude_m": 3800,
+            "speed_mach": 2.2,
+            "guidance": "红外线/紫外线制导"
+          }
+        }
+      ]
     },
     {
       "unit_code": "TWN-CMD-TN",
@@ -145,7 +267,21 @@
         "latitude": "22.9998",
         "longitude": "120.2269"
       },
-      "equipment": []
+      "equipment": [
+        {
+          "equipment_id": "EQ-TN-001",
+          "name": "CM32云豹装甲车",
+          "model_code": "CM-32",
+          "type": "infantry_fighting_vehicle",
+          "inventory_count": 60,
+          "specifications": {
+            "weight_kg": 22000,
+            "max_speed_kmh": 100,
+            "armament": "M241 7.62mm机枪",
+            "crew": 3
+          }
+        }
+      ]
     },
     {
       "unit_code": "TWN-ARTY-58",
@@ -160,7 +296,34 @@
         "latitude": "22.5519",
         "longitude": "120.5487"
       },
-      "equipment": []
+      "equipment": [
+        {
+          "equipment_id": "EQ-ARTY-001",
+          "name": "M109A2自走炮",
+          "model_code": "M109A2",
+          "type": "self_propelled_artillery",
+          "inventory_count": 60,
+          "specifications": {
+            "caliber_mm": 155,
+            "range_km": 22,
+            "rate_fire_rpm": 4,
+            "ammo_rounds": 36
+          }
+        },
+        {
+          "equipment_id": "EQ-ARTY-002",
+          "name": "海马士多管火箭系统",
+          "model_code": "HIMARS M142",
+          "type": "mlrs",
+          "inventory_count": 40,
+          "specifications": {
+            "caliber_mm": 227,
+            "range_km": 300,
+            "rockets_per_pod": 6,
+            "missiles_gmlrs": 1
+          }
+        }
+      ]
     },
     {
       "unit_code": "TWN-CBRN-36",
@@ -175,7 +338,30 @@
         "latitude": "24.9936",
         "longitude": "121.3010"
       },
-      "equipment": []
+      "equipment": [
+        {
+          "equipment_id": "EQ-CBRN-001",
+          "name": "M50面具",
+          "model_code": "M50",
+          "type": "protective_mask",
+          "inventory_count": 3000,
+          "specifications": {
+            "protection": "NBC",
+            "weight_g": 450
+          }
+        },
+        {
+          "equipment_id": "EQ-CBRN-002",
+          "name": "化学兵侦检车",
+          "model_code": "M113 CBRN",
+          "type": "cbrn_detection_vehicle",
+          "inventory_count": 12,
+          "specifications": {
+            "base_vehicle": "M113",
+            "detection_capability": "化学/生物/辐射"
+          }
+        }
+      ]
     },
     {
       "unit_code": "TWN-ENG-52",
@@ -190,7 +376,20 @@
         "latitude": "22.9998",
         "longitude": "120.2269"
       },
-      "equipment": []
+      "equipment": [
+        {
+          "equipment_id": "EQ-ENG-001",
+          "name": "M9战斗工兵车",
+          "model_code": "M9 ACE",
+          "type": "combat_engineer_vehicle",
+          "inventory_count": 24,
+          "specifications": {
+            "weight_kg": 19700,
+            "max_speed_kmh": 61,
+            "armament": "M2HB 12.7mm机枪"
+          }
+        }
+      ]
     }
   ],
   "command_relations": [
