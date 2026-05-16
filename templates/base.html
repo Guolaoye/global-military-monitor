@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ title }}{% endblock %} - 全球军事动态分析研判系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo">🛡️</span>
+            <span class="title">全球军事动态分析研判系统</span>
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-link">首页</a>
+            <a href="/situational-real" class="nav-link">真实态势推演</a>
+            <a href="/situational-sim" class="nav-link">模拟态势推演</a>
+            <a href="/threat-alert" class="nav-link">威胁预警</a>
+            <a href="/ai-chat" class="nav-link">AI知识问答</a>
+            <a href="/settings" class="nav-link">设置</a>
+        </div>
+    </nav>
+    
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer class="footer">
+        <span>全球军事动态分析研判系统 V1.0</span>
+        <span id="server-time"></span>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

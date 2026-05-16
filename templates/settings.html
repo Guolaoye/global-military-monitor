@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}系统设置{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>⚙️ 系统设置</h1>
+    <div id="settings-form" class="settings-grid"></div>
+    <button onclick="saveSettings()" class="btn btn-primary" style="margin-top:20px">💾 保存设置</button>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+async function loadSettings() {
+    const resp = await fetch('/api/settings');
+    const data = await resp.json();
+    if(data.success) renderForm(data.settings);
+}
+function renderForm(settings) {
+    const fields = [
+        {key:'feishu_app_id', label:'飞书 App ID', type:'text'},
+        {key:'feishu_app_secret', label:'飞书 App Secret', type:'password'},
+        {key:'feishu_chat_id', label:'飞书群 ID', type:'text'},
+        {key:'map_provider', label:'底图服务商', type:'select', options:['高德','天地图','OSM']},
+        {key:'crawler_interval', label:'爬虫间隔(小时)', type:'number', min:1, max:6},
+        {key:'ai_model', label:'AI 模型', type:'select', options:['MiniMax','OpenAI','智谱','通义千问']}
+    ];
+    document.getElementById('settings-form').innerHTML = fields.map(f=>'<div class="form-group"><label>'+f.label+'</label><input type="'+f.type+'" name="'+f.key+'" value="'+(settings[f.key]||'')+'">'+(f.options?'<select name="'+f.key+'">'+f.options.map(o=>'<option>'+o+'</option>').join('')+'</select>':'')+'</div>').join('');
+}
+async function saveSettings() {
+    const form = document.getElementById('settings-form');
+    const data = {};
+    form.querySelectorAll('input, select').forEach(el=>data[el.name]=el.value);
+    await fetch('/api/settings', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+    alert('设置已保存');
+}
+loadSettings();
+</script>
+<style>
+.settings-grid {display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; background: #152238; padding: 20px; border-radius: 10px;}
+</style>
+{% endblock %}

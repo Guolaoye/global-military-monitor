@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}模拟态势推演{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>🎮 模拟态势推演（兵棋推演）</h1>
+    <div class="alert alert-info">⚠️ 模拟环境数据与真实数据完全隔离，不影响原始数据</div>
+    
+    <div class="sim-controls">
+        <button onclick="startSim()" class="btn btn-primary">▶️ 启动模拟</button>
+        <button onclick="endSim()" class="btn btn-danger">⏹️ 结束模拟</button>
+        <span id="sim-status" class="status-badge">空闲</span>
+    </div>
+    
+    <div class="content-grid">
+        <div class="map-container">
+            <div id="map" class="map"></div>
+        </div>
+        <div class="sim-panel">
+            <h3>🔧 模拟设置</h3>
+            <div class="form-group">
+                <label>模拟速度</label>
+                <input type="range" id="sim-speed" min="1" max="10" value="5">
+            </div>
+            <div class="form-group">
+                <label>天气条件</label>
+                <select id="weather"><option>晴朗</option><option>多云</option><option>雨天</option><option>雪天</option><option>沙尘</option></select>
+            </div>
+            
+            <h3>📊 力量对比</h3>
+            <div id="force-balance" class="force-chart">
+                <p class="hint">启动模拟后显示</p>
+            </div>
+            
+            <h3>📋 推演报告</h3>
+            <div id="sim-report" class="report-box"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+async function startSim() {
+    document.getElementById('sim-status').textContent = '模拟中';
+    document.getElementById('sim-status').className = 'status-badge active';
+    await fetch('/api/sim/start', {method:'POST'});
+}
+async function endSim() {
+    document.getElementById('sim-status').textContent = '空闲';
+    document.getElementById('sim-status').className = 'status-badge';
+    await fetch('/api/sim/end', {method:'POST'});
+}
+</script>
+<style>
+.alert {padding: 15px; border-radius: 5px; margin: 15px 0;}
+.alert-info {background: #0d47a122; border: 1px solid #1976d2;}
+.sim-controls {display:flex; gap:10px; align-items:center; margin: 20px 0;}
+.status-badge {padding: 5px 15px; border-radius: 20px; background: #546e7a;}
+.status-badge.active {background: #2e7d32;}
+.form-group {margin: 15px 0;}
+.form-group label {display: block; margin-bottom: 5px; color: #90a4ae;}
+.form-group input, .form-group select {width: 100%; padding: 8px; background: #152238; border: 1px solid #2d4a6f; color: #e0e6ed; border-radius: 5px;}
+.force-chart {background: #152238; padding: 15px; border-radius: 5px; min-height: 150px;}
+.report-box {background: #152238; padding: 15px; border-radius: 5px; min-height: 200px; white-space: pre-wrap;}
+</style>
+{% endblock %}

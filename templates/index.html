@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}首页{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="hero">
+        <h1>🛡️ 全球军事动态分析研判系统</h1>
+        <p class="subtitle">实时态势监控 · 智能威胁预警 · 兵棋模拟推演</p>
+    </div>
+    
+    <div class="dashboard">
+        <div class="stat-card">
+            <div class="stat-icon">⚓</div>
+            <div class="stat-value" id="unit-count">-</div>
+            <div class="stat-label">监测单位</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">⚠️</div>
+            <div class="stat-value" id="threat-count">-</div>
+            <div class="stat-label">活跃威胁</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">📡</div>
+            <div class="stat-value" id="update-time">-</div>
+            <div class="stat-label">最后更新</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🔧</div>
+            <div class="stat-value">V1.0</div>
+            <div class="stat-label">系统版本</div>
+        </div>
+    </div>
+    
+    <div class="quick-links">
+        <h2>功能入口</h2>
+        <div class="link-grid">
+            <a href="/situational-real" class="link-card">
+                <div class="link-icon">🗺️</div>
+                <div class="link-title">真实态势推演</div>
+                <div class="link-desc">查看全球军事单位实时位置与历史轨迹</div>
+            </a>
+            <a href="/situational-sim" class="link-card">
+                <div class="link-icon">🎮</div>
+                <div class="link-title">模拟态势推演</div>
+                <div class="link-desc">兵棋推演，模拟作战场景（数据保护隔离）</div>
+            </a>
+            <a href="/threat-alert" class="link-card">
+                <div class="link-icon">🚨</div>
+                <div class="link-title">威胁预警</div>
+                <div class="link-desc">AI驱动的多级威胁评估与预警推送</div>
+            </a>
+            <a href="/ai-chat" class="link-card">
+                <div class="link-icon">🤖</div>
+                <div class="link-title">AI 知识问答</div>
+                <div class="link-desc">基于本地知识库的智能问答助手</div>
+            </a>
+        </div>
+    </div>
+    
+    <div class="recent-activity">
+        <h2>最近动态</h2>
+        <div id="activity-list" class="activity-list">
+            <div class="loading">加载中...</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+async function loadDashboard() {
+    try {
+        const resp = await fetch('/api/units');
+        const data = await resp.json();
+        if (data.success) {
+            document.getElementById('unit-count').textContent = data.units.length;
+        }
+    } catch (e) {
+        document.getElementById('unit-count').textContent = '?';
+    }
+    
+    try {
+        const resp = await fetch('/api/threats');
+        const data = await resp.json();
+        if (data.success) {
+            document.getElementById('threat-count').textContent = data.threats.length;
+        }
+    } catch (e) {
+        document.getElementById('threat-count').textContent = '0';
+    }
+}
+
+loadDashboard();
+</script>
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block title %}真实态势推演{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>🗺️ 真实态势推演</h1>
+    
+    <div class="control-bar">
+        <div class="timeline-control">
+            <label>时间轴:</label>
+            <input type="range" id="timeline-slider" min="0" max="100" value="100">
+            <span id="timeline-date">当前</span>
+        </div>
+        <button onclick="refreshUnits()" class="btn">刷新数据</button>
+    </div>
+    
+    <div class="content-grid">
+        <div class="map-container">
+            <div id="map" class="map"></div>
+            <div class="map-controls">
+                <button onclick="toggleLayer('warship')" class="layer-btn active">⚓ 军舰</button>
+                <button onclick="toggleLayer('submarine')" class="layer-btn active">🔻 潜艇</button>
+                <button onclick="toggleLayer('base')" class="layer-btn active">🏰 基地</button>
+                <button onclick="toggleLayer('aircraft')" class="layer-btn active">✈️ 军机</button>
+            </div>
+        </div>
+        
+        <div class="analysis-panel">
+            <h3>📊 态势分析</h3>
+            <div id="affected-units" class="units-list">
+                <p class="hint">点击地图任意位置查看受影响单位</p>
+            </div>
+            
+            <h3>🤖 AI 分析</h3>
+            <div class="ai-panel">
+                <textarea id="ai-query" placeholder="输入您的问题..."></textarea>
+                <button onclick="askAI()" class="btn btn-primary">开始分析</button>
+                <div id="ai-result" class="ai-result"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://webapi.amap.com/maps?v=2.0&key=YOUR_AMAP_KEY&plugin=AMap.Scale,AMap.ToolBar"></script>
+<script>
+let map = null;
+let markers = {};
+let visibleLayers = {warship: true, submarine: true, base: true, aircraft: true};
+
+function initMap() {
+    map = new AMap.Map('map', {
+        zoom: 4,
+        center: [105, 35],
+        mapStyle: 'amap://styles/darkblue'
+    });
+    
+    // Load units
+    loadUnits();
+}
+
+async function loadUnits() {
+    const resp = await fetch('/api/units');
+    const data = await resp.json();
+    if (data.success) {
+        data.units.forEach(unit => {
+            addMarker(unit);
+        });
+    }
+}
+
+function addMarker(unit) {
+    if (!visibleLayers[unit.type]) return;
+    const icon = getUnitIcon(unit.type);
+    const marker = new AMap.Marker({
+        position: [unit.lon, unit.lat],
+        title: unit.name,
+        content: '<div class="unit-marker ' + unit.type + '">' + icon + '</div>'
+    });
+    marker.on('click', () => showUnitDetail(unit));
+    map.add(marker);
+}
+
+function getUnitIcon(type) {
+    const icons = {warship: '⚓', submarine: '🔻', base: '🏰', aircraft: '✈️'};
+    return icons[type] || '📍';
+}
+
+function toggleLayer(type) {
+    visibleLayers[type] = !visibleLayers[type];
+    document.querySelector('.layer-btn:nth-child(' + ['warship','submarine','base','aircraft'].indexOf(type) + 1) + ')').classList.toggle('active');
+}
+
+async function showUnitDetail(unit) {
+    document.getElementById('ai-query').value = '分析 ' + unit.name + ' 的当前态势和战略意义';
+    askAI();
+}
+
+function refreshUnits() {
+    if (map) map.clearMap();
+    loadUnits();
+}
+
+async function askAI() {
+    const query = document.getElementById('ai-query').value;
+    if (!query) return;
+    
+    const resultDiv = document.getElementById('ai-result');
+    resultDiv.innerHTML = '<div class="loading">分析中...</div>';
+    
+    try {
+        const resp = await fetch('/api/ai/analyze', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({query})
+        });
+        const data = await resp.json();
+        resultDiv.innerHTML = data.success ? '<pre>' + data.result + '</pre>' : '<div class="error">' + data.error + '</div>';
+    } catch (e) {
+        resultDiv.innerHTML = '<div class="error">请求失败</div>';
+    }
+}
+
+window.onload = initMap;
+</script>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}威胁预警{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>🚨 威胁预警</h1>
+    <div class="threat-levels">
+        <div class="threat-card critical">
+            <div class="threat-icon">🔴</div>
+            <div class="threat-label">紧急</div>
+            <div class="threat-count">0</div>
+        </div>
+        <div class="threat-card high">
+            <div class="threat-icon">🟠</div>
+            <div class="threat-label">高危</div>
+            <div class="threat-count">0</div>
+        </div>
+        <div class="threat-card medium">
+            <div class="threat-icon">🟡</div>
+            <div class="threat-label">中危</div>
+            <div class="threat-count">0</div>
+        </div>
+        <div class="threat-card low">
+            <div class="threat-icon">🟢</div>
+            <div class="threat-label">低危</div>
+            <div class="threat-count">0</div>
+        </div>
+    </div>
+    <div id="threat-list" class="threat-list"></div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+fetch('/api/threats').then(r=>r.json()).then(d=>{
+    const list = document.getElementById('threat-list');
+    if(d.success && d.threats.length) list.innerHTML = d.threats.map(t=>'<div class="threat-item">'+t.message+'</div>').join('');
+    else list.innerHTML = '<p class="hint">当前无活跃威胁</p>';
+});
+</script>
+<style>
+.threat-levels {display:grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 20px 0;}
+.threat-card {padding: 20px; border-radius: 10px; text-align: center; background: #152238;}
+.threat-card.critical {border-left: 4px solid #f44336;}
+.threat-card.high {border-left: 4px solid #ff9800;}
+.threat-card.medium {border-left: 4px solid #ffeb3b;}
+.threat-card.low {border-left: 4px solid #4caf50;}
+.threat-count {font-size: 32px; font-weight: 700; margin-top: 10px;}
+.threat-list {margin-top: 20px;}
+.threat-item {background: #152238; padding: 15px; border-radius: 5px; margin: 10px 0; border-left: 3px solid #ff9800;}
+</style>
+{% endblock %}
