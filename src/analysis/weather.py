@@ -1,6 +1,6 @@
 """气象数据接入"""
 import requests
-from typing import Optional
+from typing import Optional, Dict
 
 class WeatherService:
     """气象数据服务（占位）"""
