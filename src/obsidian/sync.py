@@ -30,13 +30,30 @@ class ObsidianSync:
             
             file_path.parent.mkdir(parents=True, exist_ok=True)
             
-            # 写入 Markdown
+            # 写入 Markdown（含 YAML frontmatter）
+            created_at = intel_data.get('created_at', datetime.now().isoformat())
+            source = intel_data.get('source', 'intelligence')
+            content = intel_data.get('content', '')
+            
+            markdown_content = f"""---
+unit_uuid: {unit_uuid}
+created_at: {created_at}
+source: {source}
+title: {title}
+intel_type: {intel_data.get('intel_type', 'unknown')}
+event_date: {intel_data.get('event_date', '')}
+country: {country}
+---
+# {title}
+
+**UUID:** {unit_uuid}  
+**类型:** {intel_data.get('intel_type', 'unknown')}  
+**时间:** {intel_data.get('event_date', created_at)}  
+**内容:** {content}
+"""
+            
             with open(file_path, "w", encoding="utf-8") as f:
-                f.write(f"# {title}\n\n")
-                f.write(f"**UUID:** {unit_uuid}\n")
-                f.write(f"**类型:** {intel_data.get('intel_type', 'unknown')}\n")
-                f.write(f"**时间:** {intel_data.get('event_date', datetime.now())}\n")
-                f.write(f"**内容:** {intel_data.get('content', '')}\n")
+                f.write(markdown_content)
             
             self.sync_log.append({"time": datetime.now(), "action": "sync", "file": str(file_path)})
             return True

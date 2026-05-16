@@ -7,9 +7,9 @@ import json
 import uuid
 from datetime import datetime
 
-from src.structure.tree_view import TreeViewModel, TreeNode
-from src.structure.graph_view import GraphViewModel, GraphEdge
-from src.structure.unit_detail import (
+from src.military_tree.models import TreeViewModel, TreeNode
+from src.military_network.models import GraphViewModel, GraphEdge
+from src.unit_detail.views import (
     UnitDetailView, UnitPosition, UnitIntel, UnitAlert,
     build_unit_detail_from_db
 )
